@@ -51,7 +51,8 @@ h2 {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); 
   border-bottom: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.8);
 }
@@ -95,7 +96,7 @@ h2 {
       rgba(10, 45, 29, 0.7) 48%,
       rgba(15, 79, 46, 0.42) 100%
     ),
-    url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80');
+    url('assets/hro.jpg');
   background-position: center;
   background-size: cover;
   color: #f3fff8;
