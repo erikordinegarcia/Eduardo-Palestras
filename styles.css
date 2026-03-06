@@ -251,6 +251,35 @@ h2 {
   background: #effaf3;
 }
 
+.cta {
+  background: linear-gradient(135deg, #1f9d67, #15784d);
+  color: #ffffff;
+  text-align: center;
+}
+
+.cta-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.cta-text p {
+  max-width: 620px;
+  opacity: 0.95;
+}
+
+.cta-btn {
+  font-size: 1.1rem;
+  padding: 0.9rem 1.6rem;
+  background: #ffffff;
+  color: #15784d;
+}
+
+.cta-btn:hover {
+  background: #f3fff8;
+}
+
 .card {
   background: var(--card);
   padding: 1.2rem;
