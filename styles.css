@@ -96,7 +96,7 @@ h2 {
       rgba(10, 45, 29, 0.7) 48%,
       rgba(15, 79, 46, 0.42) 100%
     ),
-    url('images/hero.jpeg');
+    url('/images/hero.jpeg');
   background-position: center;
   background-size: cover;
   color: #f3fff8;
