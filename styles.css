@@ -96,7 +96,7 @@ h2 {
       rgba(10, 45, 29, 0.7) 48%,
       rgba(15, 79, 46, 0.42) 100%
     ),
-    url("");
+    url("images/hero.png");
   background-position: center;
   background-size: cover;
   color: #f3fff8;
@@ -157,6 +157,8 @@ h2 {
 }
 
 .about-photo img {
+  width: 100%;
+  height: 560px;
   border-radius: 1.2rem;
   min-height: 320px;
   object-fit: cover;
