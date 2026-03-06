@@ -1,5 +1,6 @@
 const navLinks = document.querySelectorAll('.nav-links a');
 const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
 const header = document.querySelector('.topbar');
 const navToggle = document.getElementById('navToggle');
 const primaryNav = document.getElementById('primaryNav');
@@ -7,9 +8,7 @@ const primaryNav = document.getElementById('primaryNav');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const setMenuOpen = (isOpen) => {
-  if (!header || !navToggle) {
-    return;
-  }
+  if (!header || !navToggle) return;
 
   header.classList.toggle('menu-open', isOpen);
   navToggle.setAttribute('aria-expanded', String(isOpen));
@@ -18,7 +17,7 @@ const setMenuOpen = (isOpen) => {
 
 if (navToggle && primaryNav) {
   navToggle.addEventListener('click', () => {
-    const isOpen = header ? header.classList.contains('menu-open') : false;
+    const isOpen = header.classList.contains('menu-open');
     setMenuOpen(!isOpen);
   });
 
@@ -37,9 +36,7 @@ const setActiveLink = (hash) => {
 };
 
 const smoothScrollTo = (target) => {
-  if (!target) {
-    return;
-  }
+  if (!target) return;
 
   const headerOffset = header ? header.offsetHeight + 12 : 0;
   const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
@@ -54,12 +51,11 @@ const smoothScrollTo = (target) => {
   const duration = 900;
   let startTime = null;
 
-  const easeInOutCubic = (time) => (time < 0.5 ? 4 * time ** 3 : 1 - ((-2 * time + 2) ** 3) / 2);
+  const easeInOutCubic = (time) =>
+    time < 0.5 ? 4 * time ** 3 : 1 - ((-2 * time + 2) ** 3) / 2;
 
   const animate = (currentTime) => {
-    if (!startTime) {
-      startTime = currentTime;
-    }
+    if (!startTime) startTime = currentTime;
 
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
@@ -79,15 +75,10 @@ anchorLinks.forEach((link) => {
   link.addEventListener('click', (event) => {
     const hash = link.getAttribute('href');
 
-    if (!hash || hash === '#') {
-      return;
-    }
+    if (!hash || hash === '#') return;
 
     const target = document.querySelector(hash);
-
-    if (!target) {
-      return;
-    }
+    if (!target) return;
 
     event.preventDefault();
     smoothScrollTo(target);
@@ -128,9 +119,7 @@ if (carousel && prevTalk && nextTalk) {
   const slide = carousel.querySelector('.talk-slide');
 
   const getStep = () => {
-    if (!slide) {
-      return 0;
-    }
+    if (!slide) return 0;
 
     const style = window.getComputedStyle(carousel);
     const gap = Number.parseFloat(style.columnGap || style.gap || '0');
