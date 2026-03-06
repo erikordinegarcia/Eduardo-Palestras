@@ -1,12 +1,43 @@
 const navLinks = document.querySelectorAll('.nav-links a');
 const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
+const header = document.querySelector('.topbar');
+const navToggle = document.getElementById('navToggle');
+const primaryNav = document.getElementById('primaryNav');
+
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const setMenuOpen = (isOpen) => {
+  if (!header || !navToggle) return;
+
+  header.classList.toggle('menu-open', isOpen);
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+  navToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+};
+
+if (navToggle && primaryNav) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = header.classList.contains('menu-open');
+    setMenuOpen(!isOpen);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      setMenuOpen(false);
+    }
+  });
+}
+
+const setActiveLink = (hash) => {
+  navLinks.forEach((link) => {
+    const isActive = link.getAttribute('href') === hash;
+    link.classList.toggle('active', isActive);
+  });
+};
 
 const smoothScrollTo = (target) => {
   if (!target) return;
 
-  const header = document.querySelector('.topbar');
   const headerOffset = header ? header.offsetHeight + 12 : 0;
   const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
 
@@ -20,12 +51,8 @@ const smoothScrollTo = (target) => {
   const duration = 900;
   let startTime = null;
 
-  const easeInOutCubic = (time) => {
-    if (time < 0.5) {
-      return 4 * time * time * time;
-    }
-    return 1 - Math.pow(-2 * time + 2, 3) / 2;
-  };
+  const easeInOutCubic = (time) =>
+    time < 0.5 ? 4 * time ** 3 : 1 - ((-2 * time + 2) ** 3) / 2;
 
   const animate = (currentTime) => {
     if (!startTime) startTime = currentTime;
@@ -57,12 +84,32 @@ anchorLinks.forEach((link) => {
     smoothScrollTo(target);
     window.history.replaceState(null, '', hash);
 
-    navLinks.forEach((item) => item.classList.remove('active'));
     if (link.matches('.nav-links a')) {
-      link.classList.add('active');
+      setActiveLink(hash);
+      setMenuOpen(false);
     }
   });
 });
+
+const sections = [...document.querySelectorAll('main section[id], footer[id]')];
+
+if (sections.length) {
+  const updateActiveByScroll = () => {
+    const headerOffset = header ? header.offsetHeight + 24 : 24;
+    let currentSection = sections[0];
+
+    sections.forEach((section) => {
+      if (window.scrollY + headerOffset >= section.offsetTop) {
+        currentSection = section;
+      }
+    });
+
+    setActiveLink(`#${currentSection.id}`);
+  };
+
+  window.addEventListener('scroll', updateActiveByScroll, { passive: true });
+  updateActiveByScroll();
+}
 
 const carousel = document.getElementById('talksCarousel');
 const prevTalk = document.getElementById('prevTalk');
