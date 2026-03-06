@@ -534,6 +534,38 @@ details p {
   color: var(--primary-strong);
 }
 
+.clientes {
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+}
+
+.clientes h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.clientes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.clientes-grid img {
+  max-width: 130px;
+  max-height: 50px;
+  object-fit: contain;
+  margin: 0 auto;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: 0.2s ease;
+}
+
+.clientes-grid img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
 @media (max-width: 640px) {
   .carousel-wrap {
     grid-template-columns: 1fr;
