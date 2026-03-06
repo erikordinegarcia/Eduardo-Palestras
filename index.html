@@ -20,7 +20,13 @@
     <header class="topbar">
       <div class="container nav-wrap">
         <p class="brand">Eduardo Palestras</p>
-        <nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primaryNav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav id="primaryNav" class="site-nav">
           <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#sobre">Sobre Mim</a></li>
@@ -34,6 +40,10 @@
 
     <main>
       <section id="home" class="hero section">
+        <div class="hero-media" aria-hidden="true">
+          <img src="images/hero.png" alt="" />
+        </div>
+
         <div class="container hero-content">
           <div class="hero-text">
             <span class="badge">Especialista em palestra</span>
