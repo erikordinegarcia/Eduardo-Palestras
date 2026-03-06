@@ -516,6 +516,24 @@ details p {
   }
 }
 
+.contact-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contato {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.contato:hover {
+  color: var(--primary-strong);
+}
+
 @media (max-width: 640px) {
   .carousel-wrap {
     grid-template-columns: 1fr;
