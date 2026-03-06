@@ -41,10 +41,41 @@ const smoothScrollTo = (target) => {
   const headerOffset = header ? header.offsetHeight + 12 : 0;
   const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
 
+<<<<<<< HEAD
   window.scrollTo({
     top: targetTop,
     behavior: prefersReducedMotion ? 'auto' : 'smooth',
   });
+=======
+  if (prefersReducedMotion) {
+    window.scrollTo(0, targetTop);
+    return;
+  }
+
+  const startTop = window.scrollY;
+  const distance = targetTop - startTop;
+  const duration = 900;
+  let startTime = null;
+
+  const easeInOutCubic = (time) =>
+    time < 0.5 ? 4 * time ** 3 : 1 - ((-2 * time + 2) ** 3) / 2;
+
+  const animate = (currentTime) => {
+    if (!startTime) startTime = currentTime;
+
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = easeInOutCubic(progress);
+
+    window.scrollTo(0, startTop + distance * eased);
+
+    if (progress < 1) {
+      window.requestAnimationFrame(animate);
+    }
+  };
+
+  window.requestAnimationFrame(animate);
+>>>>>>> 3e49f13db749fb6d01a587564d87ed27bc78c320
 };
 
 anchorLinks.forEach((link) => {
