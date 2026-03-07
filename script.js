@@ -6,9 +6,13 @@ const navToggle = document.getElementById('navToggle');
 const primaryNav = document.getElementById('primaryNav');
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let isProgrammaticScrolling = false;
+let scrollTimeoutId;
 
 const setMenuOpen = (isOpen) => {
-  if (!header || !navToggle) return;
+  if (!header || !navToggle) {
+    return;
+  }
 
   header.classList.toggle('menu-open', isOpen);
   navToggle.setAttribute('aria-expanded', String(isOpen));
@@ -17,7 +21,7 @@ const setMenuOpen = (isOpen) => {
 
 if (navToggle && primaryNav) {
   navToggle.addEventListener('click', () => {
-    const isOpen = header.classList.contains('menu-open');
+    const isOpen = header ? header.classList.contains('menu-open') : false;
     setMenuOpen(!isOpen);
   });
 
@@ -36,25 +40,44 @@ const setActiveLink = (hash) => {
 };
 
 const smoothScrollTo = (target) => {
-  if (!target) return;
+  if (!target) {
+    return;
+  }
 
   const headerOffset = header ? header.offsetHeight + 12 : 0;
   const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
 
+  if (prefersReducedMotion) {
+    window.scrollTo(0, targetTop);
+    return;
+  }
+
+  isProgrammaticScrolling = true;
+  window.clearTimeout(scrollTimeoutId);
+
   window.scrollTo({
     top: targetTop,
-    behavior: prefersReducedMotion ? 'auto' : 'smooth',
+    behavior: 'smooth',
   });
+
+  scrollTimeoutId = window.setTimeout(() => {
+    isProgrammaticScrolling = false;
+  }, 450);
 };
 
 anchorLinks.forEach((link) => {
   link.addEventListener('click', (event) => {
     const hash = link.getAttribute('href');
 
-    if (!hash || hash === '#') return;
+    if (!hash || hash === '#') {
+      return;
+    }
 
     const target = document.querySelector(hash);
-    if (!target) return;
+
+    if (!target) {
+      return;
+    }
 
     event.preventDefault();
     smoothScrollTo(target);
@@ -71,6 +94,10 @@ const sections = [...document.querySelectorAll('main section[id], footer[id]')];
 
 if (sections.length) {
   const updateActiveByScroll = () => {
+    if (isProgrammaticScrolling) {
+      return;
+    }
+
     const headerOffset = header ? header.offsetHeight + 24 : 24;
     let currentSection = sections[0];
 
@@ -104,8 +131,6 @@ if (carousel) {
     return card.getBoundingClientRect().width + gap;
   };
 
-  /* BOTÕES DESKTOP */
-
   if (prevTalk && nextTalk) {
     prevTalk.addEventListener('click', () => {
       carousel.scrollBy({
@@ -121,8 +146,6 @@ if (carousel) {
       });
     });
   }
-
-  /* ===== SWIPE MOBILE ===== */
 
   let startX = 0;
   let startScroll = 0;
