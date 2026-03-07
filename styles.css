@@ -649,6 +649,8 @@ details p {
 
 @media (max-width:768px){
 
+@media (max-width:768px){
+
   .carousel-wrap{
     display:block;
   }
@@ -667,7 +669,7 @@ details p {
     scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;
 
-    padding-bottom:10px;
+    padding-bottom:12px;
   }
 
   .cards-carousel::-webkit-scrollbar{
@@ -675,17 +677,24 @@ details p {
   }
 
   .talk-slide{
-    flex:0 0 85%;
+    flex:0 0 90%;
+    max-width:90%;
     scroll-snap-align:start;
   }
 
+  .card{
+    padding:16px;
+  }
+
   .talk-image{
+    width:100%;
     height:180px;
     object-fit:cover;
   }
 
   .btn-secondary{
     width:100%;
+    text-align:center;
   }
 
 }
