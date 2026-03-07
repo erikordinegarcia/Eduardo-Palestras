@@ -556,14 +556,13 @@ details p {
   max-height: 50px;
   object-fit: contain;
   margin: 0 auto;
-  filter: grayscale(100%);
-  opacity: 0.8;
-  transition: 0.2s ease;
+  opacity: 0.9;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .clientes-grid img:hover {
-  filter: grayscale(0%);
   opacity: 1;
+  transform: scale(1.05);
 }
 
 @media (max-width: 640px) {
