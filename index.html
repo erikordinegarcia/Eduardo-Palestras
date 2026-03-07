@@ -1,26 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eduardo | Especialista em Palestras</title>
+
     <meta
       name="description"
       content="Palestras transformadoras para empresas, escolas e eventos."
     />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
     <header class="topbar">
       <div class="container nav-wrap">
         <p class="brand">Eduardo Palestras</p>
-        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primaryNav">
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="primaryNav"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -39,6 +51,8 @@
     </header>
 
     <main>
+
+      <!-- HERO -->
       <section id="home" class="hero section">
         <div class="hero-media" aria-hidden="true">
           <img src="images/hero.png" alt="" />
@@ -47,195 +61,215 @@
         <div class="container hero-content">
           <div class="hero-text">
             <span class="badge">Especialista em palestra</span>
+
             <h1>
               <span class="highlight">Eduardo</span> Pigozzi
-              <br>
-              Especialista em palestras de saude
+              <br />
+              Especialista em palestras de saúde
             </h1>
+
             <p>
-              Especialista em palestras de saúde, especialista em NR01 e CEO da
-              empresa NR01 Brasil.
+              Especialista em palestras de saúde, especialista em NR01 e CEO da empresa NR01 Brasil.
             </p>
-            <a href="#contato" class="btn-primary">Falar com um especialista</a>
+
+            <a
+              href="https://wa.me/5511984721513"
+              target="_blank"
+              rel="noopener"
+              class="btn-primary"
+            >
+              Falar com um especialista
+            </a>
           </div>
         </div>
       </section>
 
+      <!-- SOBRE -->
       <section id="sobre" class="section about">
         <div class="container grid-two">
           <div>
             <h2>Sobre Mim</h2>
+
             <p>
-              <strong>Eduardo Pigozzi Silveira</strong> é fisioterapeuta com 15
-              anos de experiência e pós-graduado em Ergonomia, especialista em
-              análise comportamental e Professional and Self Coach,
-              pós-graduando em Gestão em Saúde Corporativa e Bem-Estar do
-              Trabalhador pelo Sirio Libanês.
+              <strong>Eduardo Pigozzi Silveira</strong> é fisioterapeuta com
+              <strong>15 anos de experiência</strong> e pós-graduado em Ergonomia, especialista em
+              análise comportamental e Professional and Self Coach, além de ser pós-graduando em
+              Gestão em Saúde Corporativa e Bem-Estar do Trabalhador pelo Sírio Libanês.
             </p>
+
             <p>
-              Com mais de 4.000 palestras realizadas em diversos contextos, tem
-              a experiência necessária para oferecer um conteúdo envolvente e
-              impactante.
+              Com mais de <strong>4.000 palestras realizadas</strong> em diversos contextos, possui
+              experiência para oferecer conteúdos envolventes e impactantes.
             </p>
+
             <p>
-              Com missão de levar o conhecimento da saúde de forma prática e
-              acessível, ajudando empresas e indivíduos a melhorar sua qualidade
-              de vida.
+              Sua missão é levar conhecimento em saúde de forma prática e acessível, ajudando
+              empresas e indivíduos a melhorar sua qualidade de vida.
             </p>
           </div>
 
           <figure class="about-photo">
-            <img
-              src="images/eduardo-foto.jpeg"
-              alt="Experiência de palco durante uma palestra"
-            />
+            <img src="images/eduardo-foto.jpeg" alt="Eduardo Pigozzi realizando uma palestra" />
           </figure>
         </div>
       </section>
 
-      <section id="palestras" class="section talks">
-        <div class="container">
-          <h2>Palestras em destaque</h2>
+      <!-- CTA -->
+      <section class="section cta">
+        <div class="container cta-wrap">
+          <div class="cta-text">
+            <h2>Quer levar uma palestra para sua empresa?</h2>
 
-          <div class="carousel-wrap">
-            <button class="carousel-btn" id="prevTalk" aria-label="Palestra anterior">
-              ‹
-            </button>
-
-            <div class="cards-carousel" id="talksCarousel">
-              <article class="card talk-slide">
-                <img
-                  class="talk-image"
-                  src="https://images.unsplash.com/photo-1473186578172-c141e6798cf4?auto=format&fit=crop&w=1200&q=80"
-                  alt="Palestra sobre saúde mental no trabalho"
-                />
-                <h3>Palestra sobre Saúde Mental no Trabalho</h3>
-                <p>
-                  Estratégias para fortalecer o bem-estar emocional, reduzir o
-                  estresse e construir ambientes de trabalho mais saudáveis.
-                </p>
-                <a href="#contato" class="btn-secondary">Falar com um especialista</a>
-              </article>
-
-              <article class="card talk-slide">
-                <img
-                  class="talk-image"
-                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
-                  alt="Palestra sobre NR01 e riscos psicossociais"
-                />
-                <h3>Palestra sobre NR01 e riscos psicossociais</h3>
-                <p>
-                  Interpretação prática da NR01 para identificar riscos
-                  psicossociais e transformar exigências legais em ações efetivas.
-                </p>
-                <a href="#contato" class="btn-secondary">Falar com um especialista</a>
-              </article>
-
-              <article class="card talk-slide">
-                <img
-                  class="talk-image"
-                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
-                  alt="Palestra sobre liderança humanizada"
-                />
-                <h3>Palestra sobre Liderança Humanizada</h3>
-                <p>
-                  Como liderar com empatia, escuta ativa e foco em resultados,
-                  valorizando pessoas e fortalecendo a cultura organizacional.
-                </p>
-                <a href="#contato" class="btn-secondary">Falar com um especialista</a>
-              </article>
-
-              <article class="card talk-slide">
-                <img
-                  class="talk-image"
-                  src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=1200&q=80"
-                  alt="Palestra sobre comunicação no trabalho"
-                />
-                <h3>Palestra sobre Comunicação no Trabalho</h3>
-                <p>
-                  Ferramentas para melhorar alinhamento entre equipes, reduzir
-                  ruídos e elevar a produtividade com comunicação assertiva.
-                </p>
-                <a href="#contato" class="btn-secondary">Falar com um especialista</a>
-              </article>
-
-              <article class="card talk-slide">
-                <img
-                  class="talk-image"
-                  src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80"
-                  alt="Palestra sobre comportamento seguro"
-                />
-                <h3>Palestra sobre Comportamento Seguro</h3>
-                <p>
-                  Práticas de prevenção e tomada de decisão segura para reduzir
-                  incidentes e fortalecer a cultura de segurança no dia a dia.
-                </p>
-                <a href="#contato" class="btn-secondary">Falar com um especialista</a>
-              </article>
-            </div>
-
-            <button class="carousel-btn" id="nextTalk" aria-label="Próxima palestra">
-              ›
-            </button>
+            <p>
+              Entre em contato agora e descubra como uma palestra pode transformar o ambiente de
+              trabalho e melhorar a qualidade de vida da sua equipe.
+            </p>
           </div>
 
-          <section class="companies" aria-labelledby="empresas-title">
-            <h3 id="empresas-title">Empresas Parceiras</h3>
-
-            <ul class="logo-grid" aria-label="Logos de empresas atendidas">
-              <li class="logo-item"><img src="#" alt="Integralmedica"></li>
-              <li class="logo-item"><img src="images/logo/carrefour-logo.svg" alt="Carrefour"></li>
-              <li class="logo-item"><img src="images/logo/atacadao-logo.svg" alt="Atacadão"></li>
-              <li class="logo-item"><img src="images/logo/Enel_Brasil_Logo_2016.svg" alt="Enel"></li>
-              <li class="logo-item"><img src="#" alt="Cyrela"></li>
-              <li class="logo-item"><img src="#" alt="Latam"></li>
-              <li class="logo-item"><img src="#" alt="Grupo Petrópolis"></li>
-              <li class="logo-item"><img src="#" alt="Adoro"></li>
-              <li class="logo-item"><img src="#" alt="Braspress"></li>
-              <li class="logo-item"><img src="#" alt="Tenda Atacado"></li>
-              <li class="logo-item"><img src="#" alt="CSN"></li>
-              <li class="logo-item"><img src="#" alt="MRV"></li>
-              <li class="logo-item"><img src="images/logo/Samsung_Group_Logo_2005.svg" alt="Samsung"></li>
-              <li class="logo-item"><img src="#" alt="SEST SENAT"></li>
-              <li class="logo-item"><img src="#" alt="Correios"></li>
-            </ul>
-          </section>
+          <a
+            href="https://wa.me/5511984721513"
+            target="_blank"
+            rel="noopener"
+            class="btn-primary cta-btn"
+          >
+            Falar com um especialista
+          </a>
         </div>
       </section>
 
+      <!-- PALESTRAS -->
+      <section id="palestras" class="palestras section">
+        <div class="container">
+          <h2>Palestras em destaque</h2>
+
+          <div class="carousel">
+            <button class="carousel-arrow left" id="prev">❮</button>
+
+            <div class="carousel-track" id="carouselTrack">
+
+              <div class="carousel-card">
+                <img src="images/saude-mental.png" alt="Saude Mental" />
+                <h3>Saúde Mental no Trabalho</h3>
+                <p>Estratégias para reduzir estresse e ansiedade no ambiente corporativo.</p>
+              </div>
+
+              <div class="carousel-card">
+                <img src="images/nr01.png" alt="NR01"/>
+                <h3>NR01 e riscos psicossociais</h3>
+                <p>Como a nova NR01 impacta empresas e trabalhadores.</p>
+              </div>
+
+              <div class="carousel-card">
+                <img src="images/lideranca.png" alt="lideranca"/>
+                <h3>Liderança Humanizada</h3>
+                <p>Como desenvolver líderes mais empáticos e produtivos.</p>
+              </div>
+
+              <div class="carousel-card">
+                <img src="images/comunicacao.png" alt="comunicacao"/>
+                <h3>Comunicação no Trabalho</h3>
+                <p>Melhore resultados através de comunicação eficaz.</p>
+              </div>
+
+              <div class="carousel-card">
+                <img src="images/comportamento.png" alt="comportamento"/>
+                <h3>Comportamento Seguro</h3>
+                <p>Redução de acidentes e fortalecimento da cultura de segurança.</p>
+              </div>
+
+            </div>
+
+            <button class="carousel-arrow right" id="next">❯</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TODAS AS PALESTRAS -->
+      <section class="todas-palestras section">
+        <div class="container">
+          <div class="palestras-box">
+            <h2>Outras palestras disponíveis</h2>
+
+            <p class="palestras-desc">
+              Além das palestras em destaque, também oferecemos diversos outros temas voltados para
+              saúde, segurança e desenvolvimento no ambiente corporativo.
+            </p>
+
+            <ul class="lista-palestras">
+              <li>Saúde Mental no Trabalho</li>
+              <li>Liderança Humanizada</li>
+              <li>Comunicação no Ambiente Corporativo</li>
+              <li>Inteligência Emocional</li>
+              <li>Comportamento Seguro</li>
+              <li>Prevenção de Acidentes</li>
+              <li>Qualidade de Vida no Trabalho</li>
+              <li>Ergonomia no Ambiente Corporativo</li>
+              <li>NR01 e Riscos Psicossociais</li>
+              <li>SIPAT – Semana Interna de Prevenção</li>
+            </ul>
+
+            <a
+              href="https://wa.me/5511984721513"
+              target="_blank"
+              rel="noopener"
+              class="btn-primary palestras-btn"
+            >
+              Falar com um especialista
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="clientes section">
+        <div class="container">
+          <h2>Patrocinadores</h2>
+
+          <div class="clientes-grid">
+            <img src="images/logo/integralmedica.svg" alt="Integralmedica" />
+            <img src="images/logo/carrefour-logo.svg" alt="Carrefour" />
+            <img src="images/logo/atacadao-logo.svg" alt="Atacadão" />
+            <img src="images/logo/Enel_Brasil_Logo_2016.svg" alt="Enel" />
+            <img src="images/logo/cyrela.svg" alt="Cyrela" />
+            <img src="images/logo/latam.svg" alt="Latam" />
+            <img src="images/logo/grupo-petropolis.svg" alt="Grupo Petrópolis" />
+            <img src="images/logo/adoro-seeklogo.png" alt="Adoro" />
+            <img src="images/logo/braspress.png" alt="Braspress" />
+            <img src="images/logo/tenda-atacado.svg" alt="Tenda Atacado" />
+            <img src="images/logo/csn.svg" alt="CSN" />
+            <img src="images/logo/mrv.png" alt="MRV" />
+            <img src="images/logo/Samsung_Group_Logo_2005.svg" alt="Samsung" />
+            <img src="images/logo/sest-senat.png" alt="SEST SENAT" />
+            <img src="images/logo/correios.svg" alt="Correios" />
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
       <section id="faq" class="section faq">
         <div class="container">
           <h2>Perguntas frequentes</h2>
 
           <div class="faq-list">
             <details>
-              <summary>As palestras podem ser personalizadas para meu evento?</summary>
-              <p>
-                Sim. Cada palestra é adaptada ao perfil do público, objetivo da
-                empresa e formato do evento.
-              </p>
+              <summary>As palestras podem ser personalizadas?</summary>
+              <p>Sim. Cada palestra é adaptada ao perfil do público e ao objetivo da empresa.</p>
             </details>
 
             <details>
-              <summary>Atende eventos online e presenciais?</summary>
-              <p>
-                Sim, com estrutura para palestras presenciais, híbridas e
-                totalmente online.
-              </p>
+              <summary>As palestras podem ser online?</summary>
+              <p>Sim. Existem formatos presenciais, híbridos e totalmente online.</p>
             </details>
 
             <details>
               <summary>Como solicitar orçamento?</summary>
-              <p>
-                Entre em contato pelo WhatsApp ou telefone no final da página e
-                informe data, local e tema de interesse.
-              </p>
+              <p>Entre em contato pelo WhatsApp informando data, local e tema da palestra.</p>
             </details>
           </div>
         </div>
       </section>
     </main>
 
+    <!-- CONTATO -->
     <footer id="contato" class="footer">
       <div class="container footer-wrap">
         <div>
@@ -244,17 +278,24 @@
         </div>
 
         <div class="contact-block">
-          <p><strong>Telefone:</strong> (11) 99999-9999</p>
-          <p><strong>E-mail:</strong> contato@eduardopalestras.com.br</p>
+          <a href="https://wa.me/5511984721513" target="_blank" rel="noopener" class="contato">
+            Tel: +55 11 98472-1513
+          </a>
+          <br />
+          <!-- EMAIL -->
+          <a href="mailto:Contato@eduardopigozzi.com.br" class="contato">
+            Email: contato@eduardopigozzi.com.br
+          </a>
         </div>
       </div>
     </footer>
 
+    <!-- BOTÃO WHATSAPP FLUTUANTE -->
     <a
       class="wppFloat"
       target="_blank"
       rel="noopener"
-      href="https://wa.me/5511982513131"
+      href="https://wa.me/5511984721513"
       aria-label="WhatsApp"
     >
       <img src="images/whatsapp.png" alt="WhatsApp" />

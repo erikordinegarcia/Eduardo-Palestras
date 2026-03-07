@@ -1,5 +1,6 @@
 const navLinks = document.querySelectorAll('.nav-links a');
 const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
 const header = document.querySelector('.topbar');
 const navToggle = document.getElementById('navToggle');
 const primaryNav = document.getElementById('primaryNav');
@@ -53,7 +54,11 @@ const smoothScrollTo = (target) => {
 
   isProgrammaticScrolling = true;
   window.clearTimeout(scrollTimeoutId);
-  window.scrollTo({ top: targetTop, behavior: 'smooth' });
+
+  window.scrollTo({
+    top: targetTop,
+    behavior: 'smooth',
+  });
 
   scrollTimeoutId = window.setTimeout(() => {
     isProgrammaticScrolling = false;
@@ -92,6 +97,7 @@ if (sections.length) {
     if (isProgrammaticScrolling) {
       return;
     }
+
     const headerOffset = header ? header.offsetHeight + 24 : 24;
     let currentSection = sections[0];
 
@@ -108,28 +114,69 @@ if (sections.length) {
   updateActiveByScroll();
 }
 
+/* ===== CARROSSEL ===== */
+
 const carousel = document.getElementById('talksCarousel');
 const prevTalk = document.getElementById('prevTalk');
 const nextTalk = document.getElementById('nextTalk');
 
-if (carousel && prevTalk && nextTalk) {
-  const slide = carousel.querySelector('.talk-slide');
-
+if (carousel) {
   const getStep = () => {
-    if (!slide) {
-      return 0;
-    }
+    const card = carousel.querySelector('.talk-slide');
+    if (!card) return 0;
 
     const style = window.getComputedStyle(carousel);
-    const gap = Number.parseFloat(style.columnGap || style.gap || '0');
-    return slide.getBoundingClientRect().width + gap;
+    const gap = parseFloat(style.columnGap || style.gap || 0);
+
+    return card.getBoundingClientRect().width + gap;
   };
 
-  prevTalk.addEventListener('click', () => {
-    carousel.scrollBy({ left: -getStep(), behavior: 'smooth' });
+  if (prevTalk && nextTalk) {
+    prevTalk.addEventListener('click', () => {
+      carousel.scrollBy({
+        left: -getStep(),
+        behavior: 'smooth',
+      });
+    });
+
+    nextTalk.addEventListener('click', () => {
+      carousel.scrollBy({
+        left: getStep(),
+        behavior: 'smooth',
+      });
+    });
+  }
+
+  let startX = 0;
+  let startScroll = 0;
+  let isSwiping = false;
+
+  carousel.addEventListener('touchstart', (e) => {
+    isSwiping = true;
+    startX = e.touches[0].clientX;
+    startScroll = carousel.scrollLeft;
   });
 
-  nextTalk.addEventListener('click', () => {
-    carousel.scrollBy({ left: getStep(), behavior: 'smooth' });
+  carousel.addEventListener('touchmove', (e) => {
+    if (!isSwiping) return;
+
+    const x = e.touches[0].clientX;
+    const distance = startX - x;
+
+    carousel.scrollLeft = startScroll + distance;
+  });
+
+  carousel.addEventListener('touchend', () => {
+    if (!isSwiping) return;
+
+    isSwiping = false;
+
+    const step = getStep();
+    const index = Math.round(carousel.scrollLeft / step);
+
+    carousel.scrollTo({
+      left: index * step,
+      behavior: 'smooth',
+    });
   });
 }
