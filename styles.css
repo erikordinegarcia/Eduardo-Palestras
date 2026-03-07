@@ -485,15 +485,27 @@ details p {
 
 @media (max-width: 640px) {
   .carousel-wrap {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto auto 1fr;
+    row-gap: 0.8rem;
   }
 
   .cards-carousel {
+    grid-column: 1 / -1;
+    grid-row: 1;
     grid-auto-columns: 100%;
   }
 
   .carousel-btn {
-    display: none;
+    display: grid;
+    grid-row: 2;
+  }
+
+  #prevTalk {
+    grid-column: 2;
+  }
+
+  #nextTalk {
+    grid-column: 3;
   }
 
   .logo-grid {
