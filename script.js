@@ -91,48 +91,22 @@ const carousel = document.getElementById('talksCarousel');
 const prevTalk = document.getElementById('prevTalk');
 const nextTalk = document.getElementById('nextTalk');
 
-if (carousel) {
+if (carousel && prevTalk && nextTalk) {
+  const slide = carousel.querySelector('.talk-slide');
+
   const getStep = () => {
-    const card = carousel.querySelector('.talk-slide');
-    if (!card) return 0;
+    if (!slide) return 0;
 
     const style = window.getComputedStyle(carousel);
-    const gap = parseFloat(style.gap || 0);
-
-    return card.offsetWidth + gap;
+    const gap = Number.parseFloat(style.columnGap || style.gap || '0');
+    return slide.getBoundingClientRect().width + gap;
   };
 
-  if (prevTalk && nextTalk) {
-    prevTalk.addEventListener('click', () => {
-      carousel.scrollBy({ left: -getStep(), behavior: 'smooth' });
-    });
-
-    nextTalk.addEventListener('click', () => {
-      carousel.scrollBy({ left: getStep(), behavior: 'smooth' });
-    });
-  }
-
-  /* SWIPE MOBILE */
-
-  let startX = 0;
-  let isDown = false;
-
-  carousel.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    isDown = true;
+  prevTalk.addEventListener('click', () => {
+    carousel.scrollBy({ left: -getStep(), behavior: 'smooth' });
   });
 
-  carousel.addEventListener('touchmove', (e) => {
-    if (!isDown) return;
-
-    const x = e.touches[0].clientX;
-    const walk = startX - x;
-
-    carousel.scrollLeft += walk;
-    startX = x;
-  });
-
-  carousel.addEventListener('touchend', () => {
-    isDown = false;
+  nextTalk.addEventListener('click', () => {
+    carousel.scrollBy({ left: getStep(), behavior: 'smooth' });
   });
 }
