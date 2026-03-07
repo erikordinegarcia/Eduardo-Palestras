@@ -296,11 +296,9 @@ h2 {
 }
 
 .carousel-wrap {
+  position: relative;
   margin-top: 1.5rem;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 0.8rem;
+  display: block;
 }
 
 .cards-carousel {
@@ -309,6 +307,7 @@ h2 {
   grid-auto-columns: calc((100% - 2rem) / 3);
   gap: 1rem;
   overflow: hidden;
+  align-items: stretch;
   scroll-behavior: smooth;
 }
 
@@ -321,12 +320,16 @@ h2 {
   height: 2.6rem;
   font-size: 1.7rem;
   cursor: pointer;
-  display: grid;
+  display: none;
   place-items: center;
 }
 
 .carousel-btn:hover {
   background: #effaf3;
+}
+
+.carousel-btn:disabled {
+  cursor: not-allowed;
 }
 
 .cta {
@@ -507,14 +510,21 @@ details p {
   }
 
   .site-nav {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
     width: 100%;
     max-height: 0;
     overflow: hidden;
+    pointer-events: none;
     transition: max-height 0.3s ease;
+    z-index: 25;
   }
 
   .topbar.menu-open .site-nav {
-    max-height: 320px;
+    max-height: 360px;
+    pointer-events: auto;
   }
 
   .nav-links {
@@ -529,7 +539,8 @@ details p {
 
   .nav-links a {
     display: block;
-    padding: 0.55rem 0.6rem;
+    padding: 0.85rem 0.8rem;
+    font-size: 1rem;
     border-radius: 0.5rem;
     border-bottom: 0;
   }
@@ -651,10 +662,28 @@ details p {
 
   .carousel-wrap{
     display:block;
+    padding-inline:2.6rem;
   }
 
   .carousel-btn{
-    display:none;
+    display:grid;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:3rem;
+    height:3rem;
+    font-size:1.6rem;
+    background:rgba(255,255,255,0.96);
+    box-shadow:0 8px 20px rgba(16,52,36,0.18);
+    z-index:2;
+  }
+
+  #prevTalk{
+    left:0;
+  }
+
+  #nextTalk{
+    right:0;
   }
 
   .cards-carousel{
@@ -666,8 +695,9 @@ details p {
 
     scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;
+    scroll-padding-inline:0.45rem;
 
-    padding-bottom:10px;
+    padding:4px 0.45rem 10px;
   }
 
   .cards-carousel::-webkit-scrollbar{
@@ -675,8 +705,9 @@ details p {
   }
 
   .talk-slide{
-    flex:0 0 85%;
-    scroll-snap-align:start;
+    flex:0 0 100%;
+    max-width:100%;
+    scroll-snap-align:center;
   }
 
   .talk-image{
@@ -688,6 +719,24 @@ details p {
     width:100%;
   }
 
+}
+
+@media (min-width:481px) and (max-width:768px){
+  .talk-slide{
+    flex-basis:88%;
+  }
+}
+
+@media (max-width:480px){
+  .carousel-wrap{
+    padding-inline:2.2rem;
+  }
+
+  .carousel-btn{
+    width:2.75rem;
+    height:2.75rem;
+    font-size:1.35rem;
+  }
 }
 
 @media (max-width:768px){
