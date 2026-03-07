@@ -21,6 +21,19 @@ if (navToggle && primaryNav) {
     setMenuOpen(!isOpen);
   });
 
+  document.addEventListener('click', (event) => {
+    if (!header.classList.contains('menu-open')) return;
+    if (header.contains(event.target)) return;
+
+    setMenuOpen(false);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setMenuOpen(false);
+    }
+  });
+
   window.addEventListener('resize', () => {
     if (window.innerWidth > 900) {
       setMenuOpen(false);
@@ -92,6 +105,20 @@ const prevTalk = document.getElementById('prevTalk');
 const nextTalk = document.getElementById('nextTalk');
 
 if (carousel) {
+  const updateCarouselButtons = () => {
+    if (!prevTalk || !nextTalk) return;
+
+    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+    const isAtStart = carousel.scrollLeft <= 4;
+    const isAtEnd = carousel.scrollLeft >= maxScrollLeft - 4;
+
+    prevTalk.disabled = isAtStart;
+    nextTalk.disabled = isAtEnd;
+
+    prevTalk.style.opacity = isAtStart ? '0.45' : '1';
+    nextTalk.style.opacity = isAtEnd ? '0.45' : '1';
+  };
+
   const getStep = () => {
     const card = carousel.querySelector('.talk-slide');
     if (!card) return 0;
@@ -112,27 +139,7 @@ if (carousel) {
     });
   }
 
-  /* SWIPE MOBILE */
-
-  let startX = 0;
-  let isDown = false;
-
-  carousel.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    isDown = true;
-  });
-
-  carousel.addEventListener('touchmove', (e) => {
-    if (!isDown) return;
-
-    const x = e.touches[0].clientX;
-    const walk = startX - x;
-
-    carousel.scrollLeft += walk;
-    startX = x;
-  });
-
-  carousel.addEventListener('touchend', () => {
-    isDown = false;
-  });
+  carousel.addEventListener('scroll', updateCarouselButtons, { passive: true });
+  window.addEventListener('resize', updateCarouselButtons);
+  updateCarouselButtons();
 }
