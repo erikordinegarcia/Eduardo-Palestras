@@ -87,6 +87,8 @@ if (sections.length) {
   updateActiveByScroll();
 }
 
+/* ===== CARROSSEL ===== */
+
 const carousel = document.getElementById('talksCarousel');
 const prevTalk = document.getElementById('prevTalk');
 const nextTalk = document.getElementById('nextTalk');
@@ -97,42 +99,61 @@ if (carousel) {
     if (!card) return 0;
 
     const style = window.getComputedStyle(carousel);
-    const gap = parseFloat(style.gap || 0);
+    const gap = parseFloat(style.columnGap || style.gap || 0);
 
-    return card.offsetWidth + gap;
+    return card.getBoundingClientRect().width + gap;
   };
+
+  /* BOTÕES DESKTOP */
 
   if (prevTalk && nextTalk) {
     prevTalk.addEventListener('click', () => {
-      carousel.scrollBy({ left: -getStep(), behavior: 'smooth' });
+      carousel.scrollBy({
+        left: -getStep(),
+        behavior: 'smooth',
+      });
     });
 
     nextTalk.addEventListener('click', () => {
-      carousel.scrollBy({ left: getStep(), behavior: 'smooth' });
+      carousel.scrollBy({
+        left: getStep(),
+        behavior: 'smooth',
+      });
     });
   }
 
-  /* SWIPE MOBILE */
+  /* ===== SWIPE MOBILE ===== */
 
   let startX = 0;
-  let isDown = false;
+  let startScroll = 0;
+  let isSwiping = false;
 
   carousel.addEventListener('touchstart', (e) => {
+    isSwiping = true;
     startX = e.touches[0].clientX;
-    isDown = true;
+    startScroll = carousel.scrollLeft;
   });
 
   carousel.addEventListener('touchmove', (e) => {
-    if (!isDown) return;
+    if (!isSwiping) return;
 
     const x = e.touches[0].clientX;
-    const walk = startX - x;
+    const distance = startX - x;
 
-    carousel.scrollLeft += walk;
-    startX = x;
+    carousel.scrollLeft = startScroll + distance;
   });
 
   carousel.addEventListener('touchend', () => {
-    isDown = false;
+    if (!isSwiping) return;
+
+    isSwiping = false;
+
+    const step = getStep();
+    const index = Math.round(carousel.scrollLeft / step);
+
+    carousel.scrollTo({
+      left: index * step,
+      behavior: 'smooth',
+    });
   });
 }
