@@ -211,56 +211,115 @@ h2 {
   transform: translateY(-1px);
 }
 
+/* BANNER */
+.banner-palestrante {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.banner-img {
+  position: absolute;
+  inset: 0;
+}
+
+.banner-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-palestrante::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(8, 25, 18, 0.75),
+    rgba(10, 45, 29, 0.45),
+    rgba(15, 79, 46, 0.2)
+  );
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner-content h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-bottom: 10px;
+}
+
+.banner-content p {
+  max-width: 520px;
+  opacity: 0.9;
+}
+
 /* ===== LISTA DE TODAS AS PALESTRAS ===== */
 
-.todas-palestras{
-  background:#ffffff;
+.todas-palestras {
+  background: #ffffff;
 }
 
-.palestras-box{
-  border:1px solid var(--border);
-  background: linear-gradient(135deg,#e6f6ee,#f3fff8);
-  border-radius:16px;
-  padding:2.5rem;
-  text-align:center;
-  box-shadow:0 12px 30px rgba(0,0,0,0.06);
+.palestras-box {
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #e6f6ee, #f3fff8);
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
 }
 
-.palestras-desc{
-  color:var(--muted);
-  margin-bottom:2rem;
+.palestras-desc {
+  color: var(--muted);
+  margin-bottom: 2rem;
 }
 
-.lista-palestras{
-  list-style:disc;
-  columns:2;
-  max-width:650px;
-  margin:auto;
-  text-align:left;
-  gap:20px;
+.lista-palestras {
+  list-style: disc;
+  columns: 2;
+  max-width: 650px;
+  margin: auto;
+  text-align: left;
+  gap: 20px;
 }
 
-.lista-palestras li{
-  margin-bottom:10px;
-  color:var(--text);
+.lista-palestras li {
+  margin-bottom: 10px;
+  color: var(--text);
 }
 
-.palestras-btn{
-  margin-top:2rem;
+.palestras-btn {
+  margin-top: 2rem;
 }
 
 /* RESPONSIVO */
 
-@media (max-width:768px){
-
-  .lista-palestras{
-    columns:1;
+@media (max-width: 768px) {
+  .lista-palestras {
+    columns: 1;
   }
 
-  .palestras-box{
-    padding:2rem 1.5rem;
+  .palestras-box {
+    padding: 2rem 1.5rem;
   }
 
+  .banner-palestrante {
+    height: 220px;
+  }
+
+  .banner-content {
+    text-align: left;
+  }
 }
 
 .about-photo {
@@ -623,7 +682,9 @@ details p {
   object-fit: contain;
   margin: 0 auto;
   opacity: 0.9;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .clientes-grid img:hover {
@@ -633,151 +694,138 @@ details p {
 
 /* ===== RESPONSIVIDADE ===== */
 
-@media (max-width: 900px){
-
-  .container{
-    width:95%;
+@media (max-width: 900px) {
+  .container {
+    width: 95%;
   }
 
-  .grid-two{
-    grid-template-columns:1fr;
-    gap:30px;
+  .grid-two {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 
-  .hero-text{
-    text-align:center;
-    margin:auto;
+  .hero-text {
+    text-align: left;
+    margin: 0;
   }
 
-  .hero p{
-    margin-left:auto;
-    margin-right:auto;
+  .hero p {
+    margin-left: 0;
+    margin-right: 0;
   }
 
   /* carrossel tablet */
-  .cards-carousel{
-    grid-auto-columns:calc((100% - 1rem) / 2);
-  }
-
-}
-
-@media (max-width:768px){
-
-  .carousel-wrap{
-    display:block;
-    padding-inline:2.6rem;
-  }
-
-  .carousel-btn{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    width:2.25rem;
-    height:2.25rem;
-    font-size:1.35rem;
-    background:rgba(255,255,255,0.96);
-    box-shadow:0 8px 20px rgba(16,52,36,0.18);
-    z-index:2;
-  }
-
-  #prevTalk{
-    left:0;
-  }
-
-  #nextTalk{
-    right:0;
-  }
-
-  .cards-carousel{
-    display:flex;
-    gap:16px;
-
-    overflow-x:auto;
-    overflow-y:hidden;
-
-    scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;
-    scroll-padding-inline:0.45rem;
-
-    padding:4px 0.45rem 10px;
-  }
-
-  .cards-carousel::-webkit-scrollbar{
-    display:none;
-  }
-
-  .talk-slide{
-    flex:0 0 100%;
-    max-width:100%;
-    scroll-snap-align:center;
-  }
-
-  .talk-image{
-    height:180px;
-    object-fit:cover;
-  }
-
-  .btn-secondary{
-    width:100%;
-  }
-
-}
-
-@media (min-width:481px) and (max-width:768px){
-  .talk-slide{
-    flex-basis:88%;
+  .cards-carousel {
+    grid-auto-columns: calc((100% - 1rem) / 2);
   }
 }
 
-@media (max-width:480px){
-  .carousel-wrap{
-    padding-inline:2.2rem;
+@media (max-width: 768px) {
+  .carousel-wrap {
+    display: block;
+    padding-inline: 2.6rem;
   }
 
-  .carousel-btn{
-    width:2rem;
-    height:2rem;
-    font-size:1.1rem;
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.35rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 20px rgba(16, 52, 36, 0.18);
+    z-index: 2;
+  }
+
+  #prevTalk {
+    left: 0;
+  }
+
+  #nextTalk {
+    right: 0;
+  }
+
+  .cards-carousel {
+    display: flex;
+    gap: 16px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-inline: 0.45rem;
+
+    padding: 4px 0.45rem 10px;
+  }
+
+  .cards-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .talk-slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    scroll-snap-align: center;
+  }
+
+  .talk-image {
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .btn-secondary {
+    width: 100%;
   }
 }
 
-@media (max-width:768px){
-
-  .palestras-box{
-    padding:1.8rem;
+@media (min-width: 481px) and (max-width: 768px) {
+  .talk-slide {
+    flex-basis: 88%;
   }
-
-  .lista-palestras{
-    columns:1;
-    text-align:left;
-  }
-
 }
 
-
-@media (max-width:768px){
-
-  .clientes-grid{
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+@media (max-width: 480px) {
+  .carousel-wrap {
+    padding-inline: 2.2rem;
   }
 
+  .carousel-btn {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.1rem;
+  }
 }
 
-@media (max-width:480px){
-
-  .clientes-grid{
-    grid-template-columns:repeat(2,1fr);
+@media (max-width: 768px) {
+  .palestras-box {
+    padding: 1.8rem;
   }
 
+  .lista-palestras {
+    columns: 1;
+    text-align: left;
+  }
 }
 
-@media (max-width:768px){
-
-  .footer-wrap{
-    flex-direction:column;
-    text-align:center;
-    gap:20px;
+@media (max-width: 768px) {
+  .clientes-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
   }
+}
 
+@media (max-width: 480px) {
+  .clientes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-wrap {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
 }
