@@ -264,6 +264,38 @@ h2 {
   opacity: 0.9;
 }
 
+.galeria {
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+}
+
+.galeria h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.galeria-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.galeria-grid img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
 /* ===== LISTA DE TODAS AS PALESTRAS ===== */
 
 .todas-palestras {
