@@ -828,6 +828,10 @@ details p {
     height: 2rem;
     font-size: 1.1rem;
   }
+
+  .galeria-grid img {
+    height: 180px;
+  }
 }
 
 @media (max-width: 768px) {
