@@ -143,3 +143,25 @@ if (carousel) {
   window.addEventListener('resize', updateCarouselButtons);
   updateCarouselButtons();
 }
+
+// FORMULARIO
+function enviarEmail(e) {
+  e.preventDefault();
+
+  const nome = document.getElementById('nome').value;
+  const email = document.getElementById('email').value;
+  const mensagem = document.getElementById('mensagem').value;
+
+  const assunto = 'Contato pelo site';
+  const corpo = `Nome: ${nome}
+Email: ${email}
+
+Mensagem:
+${mensagem}`;
+
+  window.location.href =
+    'mailto:erik.garcia9@hotmail.com?subject=' +
+    encodeURIComponent(assunto) +
+    '&body=' +
+    encodeURIComponent(corpo);
+}
