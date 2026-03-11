@@ -572,6 +572,89 @@ details p {
   margin-bottom: 0.4rem;
 }
 
+/* FORMULARIO */
+/* FORMULÁRIO CONTATO */
+
+.formulario-contato {
+  position: relative;
+  padding: 120px 0;
+  color: white;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(6, 18, 38, 0.75) 0%,
+      rgba(6, 18, 38, 0.85) 40%,
+      rgba(6, 18, 38, 0.95) 100%
+    ),
+    url('images/eduardo-form.jpeg');
+
+  background-size: cover;
+  background-position: left center;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 60px;
+  align-items: center;
+}
+
+.form-text h2 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  margin-bottom: 10px;
+}
+
+.form-text p {
+  opacity: 0.85;
+}
+
+.form-box {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 28px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-box input,
+.form-box textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.form-box textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.form-box button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.form-subtitulo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f9d67;
+  margin-bottom: 6px;
+}
+
+.form-descricao {
+  opacity: 0.85;
+  font-size: 0.95rem;
+  max-width: 420px;
+}
+
 /* WhatsApp floating */
 .wppFloat {
   position: fixed;
@@ -809,6 +892,15 @@ details p {
 
   .btn-secondary {
     width: 100%;
+  }
+
+  .form-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .formulario-contato {
+    background-position: center;
   }
 }
 
