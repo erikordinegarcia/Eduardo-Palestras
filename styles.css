@@ -836,6 +836,14 @@ details p {
 }
 
 @media (max-width: 768px) {
+  .hero-content {
+    padding-top: 40px;
+  }
+
+  .hero-text {
+    margin-top: -80px;
+  }
+
   .carousel-wrap {
     display: block;
     padding-inline: 2.6rem;
