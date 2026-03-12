@@ -616,6 +616,7 @@ details p {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 30px;;
 }
 
 .form-box input,
