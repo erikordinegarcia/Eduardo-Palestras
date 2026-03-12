@@ -837,7 +837,7 @@ details p {
 
 @media (max-width: 768px) {
   .hero-content {
-    padding-top: 40px;
+    padding-top: 20px;
   }
 
   .hero-text {
