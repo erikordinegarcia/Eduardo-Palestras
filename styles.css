@@ -842,7 +842,15 @@ details p {
 
   .hero-text {
     margin-top: -80px;
-    
+
+  }
+
+  .banner-content h2 {
+    margin-top: -10px;
+  }
+
+  .banner-content p {
+    margin-top: 12px;
   }
 
   .carousel-wrap {
