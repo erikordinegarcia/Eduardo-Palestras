@@ -616,7 +616,6 @@ details p {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 40px;;
 }
 
 .form-box input,
@@ -852,6 +851,10 @@ details p {
 
   .banner-content p {
     margin-top: 12px;
+  }
+
+  .form-box {
+    margin-top: 65px;;
   }
 
   .carousel-wrap {
