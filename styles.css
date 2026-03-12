@@ -837,11 +837,12 @@ details p {
 
 @media (max-width: 768px) {
   .hero-content {
-    padding-top: 20px;
+    padding-top: 10px;
   }
 
   .hero-text {
     margin-top: -80px;
+    
   }
 
   .carousel-wrap {
