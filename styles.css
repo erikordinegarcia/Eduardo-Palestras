@@ -296,6 +296,31 @@ h2 {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+.galeria-carousel{
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.slide{
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.slide.active{
+  opacity: 1;
+}
+
 /* ===== LISTA DE TODAS AS PALESTRAS ===== */
 
 .todas-palestras {
@@ -842,7 +867,6 @@ details p {
 
   .hero-text {
     margin-top: -80px;
-
   }
 
   .banner-content h2 {
@@ -854,7 +878,7 @@ details p {
   }
 
   .form-box {
-    margin-top: 65px;;
+    margin-top: 65px;
   }
 
   .carousel-wrap {
