@@ -73,6 +73,10 @@ h2 {
   display: none;
 }
 
+.title-mobile {
+  display: none;
+}
+
 .nav-wrap {
   display: flex;
   justify-content: space-between;
@@ -189,11 +193,15 @@ h2 {
   font-size: 0.9rem;
   padding: 0.3rem 0.8rem;
   margin-bottom: 1rem;
+  position: relative;
+  top: -10px;
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-size: 35px;
   margin-bottom: 1rem;
+  position: relative;
+  top: -10px;
 }
 
 .hero p {
@@ -387,6 +395,31 @@ h2 {
 
   .banner-content {
     text-align: left;
+  }
+
+  .title-desktop {
+    display: none;
+  }
+
+  .title-mobile {
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  .title-mobile,
+  .text-mobile {
+    display: none;
+  }
+
+  .btn-primary {
+
   }
 }
 
@@ -880,7 +913,7 @@ details p {
   }
 
   .hero-content {
-    padding-top: 10px;
+    padding-top: 65px;
   }
 
   .hero-text {
@@ -897,6 +930,16 @@ details p {
 
   .form-box {
     margin-top: 65px;
+  }
+
+  .title-desktop,
+  .text-desktop {
+    display: none;
+  }
+
+  .title-mobile,
+  .text-mobile {
+    display: block;
   }
 
   .carousel-wrap {
