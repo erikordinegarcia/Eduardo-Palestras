@@ -183,5 +183,22 @@ if (slides.length) {
     slides[current].classList.add('active');
   }
 
-  setInterval(trocarSlide, 2500);
+  setInterval(trocarSlide, 2500); // Troca de slide a cada 2.5 segundos
+}
+
+let lastScroll = 0;
+const siteHeader = document.getElementById('header');
+
+if (siteHeader) {
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > lastScroll && currentScroll > 50) {
+      siteHeader.classList.add('hide');
+    } else {
+      siteHeader.classList.remove('hide');
+    }
+
+    lastScroll = currentScroll;
+  });
 }
