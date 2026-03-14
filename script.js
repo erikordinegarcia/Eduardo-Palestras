@@ -160,7 +160,7 @@ Mensagem:
 ${mensagem}`;
 
   window.location.href =
-    'mailto:erik.garcia9@hotmail.com?subject=' +
+    'mailto:contato@eduardopigozzi.com.br?subject=' +
     encodeURIComponent(assunto) +
     '&body=' +
     encodeURIComponent(corpo);
