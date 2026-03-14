@@ -183,5 +183,5 @@ if (slides.length) {
     slides[current].classList.add('active');
   }
 
-  setInterval(trocarSlide, 3500);
+  setInterval(trocarSlide, 2500);
 }
