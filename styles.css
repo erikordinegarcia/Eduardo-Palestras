@@ -77,6 +77,14 @@ h2 {
   display: none;
 }
 
+.title-mobile {
+  display: none;
+}
+
+.text-mobile {
+  display: none;
+}
+
 .nav-wrap {
   display: flex;
   justify-content: space-between;
@@ -418,8 +426,8 @@ h2 {
     display: none;
   }
 
-  .btn-primary {
-
+  .hero-text a {
+    padding: 0.6rem 1.2rem;
   }
 }
 
