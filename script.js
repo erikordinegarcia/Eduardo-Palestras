@@ -242,7 +242,7 @@ prevBtn.addEventListener('click', () => {
   updateCarousel();
 });
 
-/* autoplay */
+// CONTADOR
 setInterval(() => {
   const visible = getVisibleCards();
   const max = carousel2.children.length - visible;
@@ -250,3 +250,106 @@ setInterval(() => {
   index = index >= max ? 0 : index + visible;
   updateCarousel();
 }, 10000);
+
+const counters = document.querySelectorAll('.contador');
+
+const formatNumber = (num) => {
+  return '+' + num.toLocaleString('pt-BR');
+};
+
+const startCounter = (counter) => {
+  const target = +counter.getAttribute('data-target');
+  let current = 0;
+
+  const increment = target / 200;
+
+  const update = () => {
+    current += increment;
+
+    if (current < target) {
+      counter.innerText = formatNumber(Math.floor(current));
+      requestAnimationFrame(update);
+    } else {
+      counter.innerText = formatNumber(target);
+    }
+  };
+
+  update();
+};
+
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const counter = entry.target;
+      startCounter(counter);
+      obs.unobserve(counter);
+    }
+  });
+}, {
+  threshold: 0.5
+});
+
+counters.forEach((counter) => {
+  counter.innerText = '+0';
+  observer.observe(counter);
+});
+
+// =========================
+// SCROLL REVEAL
+// =========================
+const revealElements = document.querySelectorAll(
+  '.reveal, .reveal-delay, .title-line'
+);
+
+const revealOnScroll = () => {
+  const trigger = window.innerHeight * 0.85;
+
+  revealElements.forEach((el) => {
+    const top = el.getBoundingClientRect().top;
+
+    if (top < trigger) {
+      el.classList.add('active');
+    }
+  });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+
+// ===== TYPE EFFECT CORRIGIDO (mantém <br>) =====
+const typeElements = document.querySelectorAll('.type-effect');
+
+typeElements.forEach((el) => {
+  const nodes = [...el.childNodes];
+  el.innerHTML = '';
+
+  nodes.forEach((node) => {
+    if (node.nodeName === "BR") {
+      el.appendChild(document.createElement("br"));
+    } else {
+      const text = node.textContent;
+
+      text.split('').forEach((letter, i) => {
+        const span = document.createElement('span');
+        span.textContent = letter;
+        span.style.transition = '0.3s';
+        span.style.transitionDelay = `${i * 0.02}s`;
+        el.appendChild(span);
+      });
+    }
+  });
+});
+
+const typeObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const spans = entry.target.querySelectorAll('span');
+      spans.forEach((span) => {
+        span.style.opacity = 1;
+        span.style.transform = 'translateY(0)';
+      });
+    }
+  });
+});
+
+typeElements.forEach((el) => typeObserver.observe(el));

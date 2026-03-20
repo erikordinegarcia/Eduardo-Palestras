@@ -1017,6 +1017,63 @@ details p {
   transform: scale(1.05);
 }
 
+/* ===== ANIMAÇÕES SCROLL ===== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.reveal-delay.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CASCATA */
+.reveal-delay:nth-child(1) { transition: 0.6s 0.1s; }
+.reveal-delay:nth-child(2) { transition: 0.6s 0.2s; }
+.reveal-delay:nth-child(3) { transition: 0.6s 0.3s; }
+.reveal-delay:nth-child(4) { transition: 0.6s 0.4s; }
+
+/* LINHA ANIMADA */
+.title-line {
+  position: relative;
+  display: inline-block;
+}
+
+.title-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 3px;
+  background: var(--primary);
+  transition: width 0.8s ease;
+}
+
+.title-line.active::after {
+  width: 100%;
+}
+
+/* TYPE EFFECT */
+.type-effect span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
 /* ===== RESPONSIVIDADE ===== */
 
 @media (max-width: 900px) {
