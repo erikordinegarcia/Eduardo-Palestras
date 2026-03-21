@@ -1017,6 +1017,8 @@ details p {
   transform: scale(1.05);
 }
 
+
+
 /* ===== ANIMAÇÕES SCROLL ===== */
 
 .reveal {
@@ -1069,10 +1071,11 @@ details p {
 
 /* TYPE EFFECT */
 .type-effect span {
-  display: inline-block;
+  display: inline;
   opacity: 0;
   transform: translateY(10px);
 }
+
 
 /* ===== RESPONSIVIDADE ===== */
 
