@@ -331,7 +331,7 @@ typeElements.forEach((el) => {
 
       text.split('').forEach((letter, i) => {
         const span = document.createElement('span');
-        span.textContent = letter;
+        span.innerHTML = letter === ' ' ? '&nbsp;' : letter;
         span.style.transition = '0.3s';
         span.style.transitionDelay = `${i * 0.02}s`;
         el.appendChild(span);
