@@ -183,7 +183,7 @@ if (slides.length) {
     slides[current].classList.add('active');
   }
 
-  setInterval(trocarSlide, 2500); // Troca de slide a cada 2.5 segundos
+  setInterval(trocarSlide, 1500); // Troca o slide a cada 1.5 segundos
 }
 
 let lastScroll = 0;
@@ -241,6 +241,83 @@ prevBtn.addEventListener('click', () => {
   index = index <= 0 ? max : index - visible;
   updateCarousel();
 });
+
+// DEPOIMENTOS
+const feedbackCarousel = document.getElementById('feedbackCarousel');
+const prevFeedback = document.getElementById('prevFeedback');
+const nextFeedback = document.getElementById('nextFeedback');
+
+if (feedbackCarousel) {
+  const feedbackCards = [...feedbackCarousel.querySelectorAll('.feedback-card')];
+  let feedbackPageStarts = [0];
+  let feedbackPageIndex = 0;
+
+  const updateFeedbackPosition = () => {
+    const activeCard = feedbackCards[feedbackPageStarts[feedbackPageIndex]];
+    const targetLeft = activeCard ? activeCard.offsetLeft : 0;
+
+    feedbackCarousel.style.transform = `translateX(-${targetLeft}px)`;
+
+    if (prevFeedback) prevFeedback.disabled = feedbackPageIndex === 0;
+    if (nextFeedback) nextFeedback.disabled = feedbackPageIndex >= feedbackPageStarts.length - 1;
+  };
+
+  const calculateFeedbackPages = () => {
+    if (!feedbackCards.length) return;
+
+    feedbackCarousel.style.transform = 'translateX(0px)';
+
+    const wrapper = feedbackCarousel.parentElement;
+    const wrapperWidth = wrapper ? wrapper.clientWidth : feedbackCarousel.clientWidth;
+    const pageStarts = [];
+    let index = 0;
+
+    while (index < feedbackCards.length) {
+      pageStarts.push(index);
+
+      const startLeft = feedbackCards[index].offsetLeft;
+      let endIndex = index;
+
+      while (endIndex + 1 < feedbackCards.length) {
+        const nextCard = feedbackCards[endIndex + 1];
+        const nextRight = nextCard.offsetLeft + nextCard.offsetWidth;
+
+        if (nextRight - startLeft > wrapperWidth) break;
+        endIndex += 1;
+      }
+
+      if (endIndex === feedbackCards.length - 1) break;
+
+      const visibleCount = Math.max(1, endIndex - index + 1);
+      const remainingCards = feedbackCards.length - (endIndex + 1);
+
+      if (remainingCards > 0 && remainingCards < visibleCount) {
+        index = Math.max(index + 1, feedbackCards.length - visibleCount);
+      } else {
+        index = endIndex + 1;
+      }
+    }
+
+    feedbackPageStarts = [...new Set(pageStarts)];
+    feedbackPageIndex = Math.min(feedbackPageIndex, feedbackPageStarts.length - 1);
+    updateFeedbackPosition();
+  };
+
+  prevFeedback?.addEventListener('click', () => {
+    if (feedbackPageIndex === 0) return;
+    feedbackPageIndex -= 1;
+    updateFeedbackPosition();
+  });
+
+  nextFeedback?.addEventListener('click', () => {
+    if (feedbackPageIndex >= feedbackPageStarts.length - 1) return;
+    feedbackPageIndex += 1;
+    updateFeedbackPosition();
+  });
+
+  window.addEventListener('resize', calculateFeedbackPages);
+  calculateFeedbackPages();
+}
 
 // CONTADOR
 setInterval(() => {

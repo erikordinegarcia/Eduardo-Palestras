@@ -165,6 +165,23 @@ h2 {
   );
 }
 
+.hero-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.hero-tags span {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
 .hero-media {
   position: absolute;
   inset: 0;
@@ -627,6 +644,7 @@ h2 {
 .feedback-wrapper {
   position: relative;
   overflow: hidden;
+  padding: 0 56px;
 }
 
 /* CARROSSEL */
@@ -639,7 +657,7 @@ h2 {
 
 /* CARD */
 .feedback-card {
-  min-width: 300px;
+  flex: 0 0 clamp(260px, 28vw, 320px);
   background: #ffffff;
   border-radius: 16px;
   padding: 25px;
@@ -650,6 +668,10 @@ h2 {
 
 .feedback-card:hover {
   transform: translateY(-5px);
+}
+
+.feedback-card-featured {
+  flex-basis: clamp(300px, 34vw, 380px);
 }
 
 /* IMAGEM (AJUSTADA - MUITO MAIS IMPORTANTE) */
@@ -697,6 +719,11 @@ h2 {
   background: #15784d;
 }
 
+.feedback-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .prev {
   left: 0;
 }
@@ -707,34 +734,36 @@ h2 {
 
 /* DESKTOP (GRID BONITO) */
 @media (min-width: 1024px) {
-  .feedback-carousel {
-    display: flex;
-    gap: 25px;
-    transition: transform 0.4s ease;
-    will-change: transform;
-  }
-
   .feedback-card {
-    min-width: 300px;
+    flex-basis: clamp(260px, 24vw, 310px);
   }
 }
 
 /* TABLET */
 @media (max-width: 1024px) {
-  .feedback-card {
-    min-width: 320px;
+  .feedback-card-featured {
+    flex-basis: clamp(320px, 30vw, 380px);
   }
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
-  .feedback h2 {
-    font-size: 24px;
+  .feedback-wrapper {
+    padding: 0 48px;
   }
 
-  .feedback-card {
-    min-width: 85%;
-    padding: 20px;
+  .feedback-card,
+  .feedback-card-featured {
+    flex-basis: calc(50% - 12.5px);
+  }
+
+  .feedback-wrapper {
+    padding: 0 42px;
+  }
+
+  .feedback-card,
+  .feedback-card-featured {
+    flex-basis: 100%;
   }
 
   .feedback-card img {
@@ -1017,8 +1046,6 @@ details p {
   transform: scale(1.05);
 }
 
-
-
 /* ===== ANIMAÇÕES SCROLL ===== */
 
 .reveal {
@@ -1043,10 +1070,18 @@ details p {
 }
 
 /* CASCATA */
-.reveal-delay:nth-child(1) { transition: 0.6s 0.1s; }
-.reveal-delay:nth-child(2) { transition: 0.6s 0.2s; }
-.reveal-delay:nth-child(3) { transition: 0.6s 0.3s; }
-.reveal-delay:nth-child(4) { transition: 0.6s 0.4s; }
+.reveal-delay:nth-child(1) {
+  transition: 0.6s 0.1s;
+}
+.reveal-delay:nth-child(2) {
+  transition: 0.6s 0.2s;
+}
+.reveal-delay:nth-child(3) {
+  transition: 0.6s 0.3s;
+}
+.reveal-delay:nth-child(4) {
+  transition: 0.6s 0.4s;
+}
 
 /* LINHA ANIMADA */
 .title-line {
@@ -1075,7 +1110,6 @@ details p {
   opacity: 0;
   transform: translateY(10px);
 }
-
 
 /* ===== RESPONSIVIDADE ===== */
 
