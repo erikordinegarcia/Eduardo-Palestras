@@ -203,45 +203,6 @@ if (siteHeader) {
   });
 }
 
-const carousel2 = document.getElementById('feedbackCarousel');
-const nextBtn = document.getElementById('nextFeedback');
-const prevBtn = document.getElementById('prevFeedback');
-
-let index = 0;
-
-function getVisibleCards() {
-  const width = window.innerWidth;
-  if (width >= 1024) return 3; // desktop
-  if (width >= 768) return 2; // tablet
-  return 1; // mobile
-}
-
-function updateCarousel() {
-  const card = carousel2.querySelector('.feedback-card');
-  if (!card) return;
-
-  const gap = 25;
-  const cardWidth = card.offsetWidth + gap;
-
-  carousel2.style.transform = `translateX(-${index * cardWidth}px)`;
-}
-
-nextBtn.addEventListener('click', () => {
-  const visible = getVisibleCards();
-  const max = carousel2.children.length - visible;
-
-  index = index >= max ? 0 : index + visible;
-  updateCarousel();
-});
-
-prevBtn.addEventListener('click', () => {
-  const visible = getVisibleCards();
-  const max = carousel2.children.length - visible;
-
-  index = index <= 0 ? max : index - visible;
-  updateCarousel();
-});
-
 // DEPOIMENTOS
 const feedbackCarousel = document.getElementById('feedbackCarousel');
 const prevFeedback = document.getElementById('prevFeedback');
@@ -319,14 +280,6 @@ if (feedbackCarousel) {
   calculateFeedbackPages();
 }
 
-// CONTADOR
-setInterval(() => {
-  const visible = getVisibleCards();
-  const max = carousel2.children.length - visible;
-
-  index = index >= max ? 0 : index + visible;
-  updateCarousel();
-}, 10000);
 
 const counters = document.querySelectorAll('.contador');
 
