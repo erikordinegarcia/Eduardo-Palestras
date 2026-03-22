@@ -896,6 +896,18 @@ details p {
   max-width: 420px;
 }
 
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-item img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 /* WhatsApp floating */
 .wppFloat {
   position: fixed;
