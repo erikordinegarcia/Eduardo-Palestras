@@ -431,6 +431,8 @@ h2 {
 
   .hero h1 {
     font-size: 1.8rem;
+    /* AUMENTAR ESPACAMENTO EM BAIXO */
+    padding: 0.5rem 0;
   }
 
   .hero p {
