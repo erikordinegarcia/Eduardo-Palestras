@@ -430,7 +430,7 @@ h2 {
   }
 
   .hero h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     /* AUMENTAR ESPACAMENTO EM BAIXO */
     padding: 0.5rem 0;
   }
@@ -1005,7 +1005,7 @@ details p {
   }
 
   .hero {
-    min-height: 72vh;
+    min-height: 65vh;
   }
 }
 
@@ -1196,7 +1196,7 @@ details p {
   }
 
   .hero-text {
-    margin-top: -80px;
+    margin-top: -120px;
   }
 
   .banner-content h2 {
